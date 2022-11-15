@@ -4,7 +4,7 @@ import random
 class Generator:
 
     @staticmethod
-    def random_int(self, lower, upper):
+    def random_int(lower, upper):
         return random.randint(lower, upper + 1)
 
     def random_char(self):
@@ -25,13 +25,13 @@ class Generator:
         test_str = ""
         for line in self.__stdin_format__:
             for elem in line:
-                if elem.type == "char":
-                    test_str.append(self.random_char())
-                if elem.type == "int":
-                    test_str.append(str(self.random_int(elem.getlower(), elem.getupper())))
-                if elem.type == "string":
-                    test_str.append(self.random_str(elem.getlower(), elem.getupper()))
-                test_str.append(' ')
-            test_str.append('\n')
+                if elem.__type__ == "char":
+                    test_str = test_str + self.random_char()
+                if elem.__type__ == "int":
+                    test_str = test_str + str(self.random_int(elem.get_lower(), elem.get_upper()))
+                if elem.__type__ == "string":
+                    test_str = test_str + self.random_str(elem.get_lower(), elem.get_upper())
+                test_str = test_str + ' '
+            test_str = test_str + '\n'
         return test_str
 

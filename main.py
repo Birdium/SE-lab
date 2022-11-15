@@ -1,3 +1,5 @@
+import os
+
 from inputter import Inputter
 from checker import Checker
 from generator import Generator
@@ -8,11 +10,17 @@ output_path = "output"
 
 
 def main():
-    inputter = Inputter(input_path)
-    gene_format = inputter.get_format()
-    generator = Generator(gene_format)
-    p_list = inputter.get_programs()
-    eq_pairs, neq_pairs = Checker.check_list(p_list, generator)
+    eq_pairs = []
+    neq_pairs = []
+    for folder in os.listdir(input_path):
+        folder_path = os.path.join(input_path, folder)
+        inputter = Inputter(folder_path)
+        gene_format = inputter.get_format()
+        generator = Generator(gene_format)
+        p_list = inputter.get_programs()
+        new_eq_pairs, new_neq_pairs = Checker.check_list(p_list, generator)
+        eq_pairs.extend(new_eq_pairs)
+        neq_pairs.extend(new_neq_pairs)
     outputter = Outputter(eq_pairs, neq_pairs, output_path)
     outputter.write_csv()
 

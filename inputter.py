@@ -7,16 +7,16 @@ from element import Element
 class Inputter:
 
     @staticmethod
-    def parse_format(self, path: str):
+    def parse_format(path):
         result = []
         with open(path, 'r', encoding='utf-8') as f:
             for line in f.readlines():
                 line_result = []
                 for item in line.split(" "):
-                    line_result.append(re.findall(r"(int)\((\d+):(\d+)\)", item))
-                    line_result.append(re.findall(r"(string)\((\d+):(\d+)\)", item))
-                    line_result.append(re.findall(r"(char)", item))
-                line_result = map(line_result, Element)
+                    line_result.extend(re.findall(r"(int)\((\d+),(\d+)\)", item))
+                    line_result.extend(re.findall(r"(string)\((\d+),(\d+)\)", item))
+                    line_result.extend(re.findall(r"(char)", item))
+                line_result = map(Element, line_result)
                 result.append(line_result)
         return result
 
@@ -30,7 +30,8 @@ class Inputter:
         self.__folder_path__ = path
         self.__programs__ = []
         for file in os.listdir(path):
+            file_path = os.path.join(path, file)
             if file == "stdin_format.txt":
-                self.__stdin_format__ = self.parse_format(file)
+                self.__stdin_format__ = self.parse_format(file_path)
             else:
-                self.__programs__.append(Program(file))
+                self.__programs__.append(Program(file_path))
