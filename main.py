@@ -23,6 +23,7 @@ def main():
         neq_pairs.extend(new_neq_pairs)
     outputter = Outputter(eq_pairs, neq_pairs, output_path)
     outputter.write_csv()
+    print("Success!")
 
 
 if __name__ == "__main__":
