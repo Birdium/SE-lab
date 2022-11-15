@@ -37,7 +37,8 @@ class Generator:
 
     def __init__(self, stdin_format):
         self.__alphabet__ = "qwertyuiopasdfghjklzxcvbnm"
-        self.__stdin_format__ = list
+        self.__stdin_format__ = stdin_format
+
 
     def gen_test(self):
         test_str = ""

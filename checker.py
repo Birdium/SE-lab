@@ -8,7 +8,7 @@ class Checker:
         return Checker.equiv(result1, result2)
 
     @staticmethod
-    def check_list(p_list):
+    def check_list(p_list, generator):
         eq_pairs = neq_pairs = []
         for i1 in range(len(p_list)):
             for i2 in range(p1):

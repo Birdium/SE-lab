@@ -26,11 +26,14 @@ class Inputter:
                 result.append(line_result)
         return result
 
+    def get_format(self):
+        return self.__stdin_format__
+
     def get_programs(self):
         return self.__programs__
 
     def __init__(self, path: str):
-        self.__path__ = path
+        self.__folder_path__ = path
         self.__programs__ = []
         for file in os.listdir(path):
             if file == "stdin_format.txt":
