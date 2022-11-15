@@ -1,5 +1,6 @@
 import os
 import re
+from program import Program
 
 
 class Element:
@@ -39,4 +40,4 @@ class Inputter:
             if file == "stdin_format.txt":
                 self.__stdin_format__ = self.parse_format(file)
             else:
-                self.__programs__.append(file)
+                self.__programs__.append(Program(file))
