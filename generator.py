@@ -12,9 +12,9 @@ class Generator:
 
     def random_str(self, lower, upper):
         rand_str = ""
-        rand_len = self.random_int(self, lower, upper)
-        for i in rand_len:
-            rand_str.append(self.random_char())
+        rand_len = self.random_int(lower, upper)
+        for _ in range(0, rand_len):
+            rand_str = rand_str + self.random_char()
         return rand_str
 
     def __init__(self, stdin_format):
@@ -34,4 +34,3 @@ class Generator:
                 test_str = test_str + ' '
             test_str = test_str + '\n'
         return test_str
-

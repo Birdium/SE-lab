@@ -1,6 +1,6 @@
 import os.path
 import csv
-from program import Program
+
 
 class Outputter:
 
@@ -8,6 +8,12 @@ class Outputter:
         self.__output_dir__ = output_dir
         self.__eq_pairs__ = [[p.get_dir() for p in pair] for pair in eq_pairs]
         self.__neq_pairs__ = [[p.get_dir() for p in pair] for pair in neq_pairs]
+
+    def get_eq_pairs(self):
+        return self.__eq_pairs__
+
+    def get_neq_pair(self):
+        return self.__neq_pairs__
 
     def write_csv(self):
         eq_csv_path = os.path.join(self.__output_dir__, "equal.csv")

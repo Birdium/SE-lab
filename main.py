@@ -5,15 +5,15 @@ from checker import Checker
 from generator import Generator
 from outputter import Outputter
 
-input_path = "input"
-output_path = "output"
+INPUT_PATH = "input"
+OUTPUT_PATH = "output"
 
 
 def main():
     eq_pairs = []
     neq_pairs = []
-    for folder in os.listdir(input_path):
-        folder_path = os.path.join(input_path, folder)
+    for folder in os.listdir(INPUT_PATH):
+        folder_path = os.path.join(INPUT_PATH, folder)
         inputter = Inputter(folder_path)
         gene_format = inputter.get_format()
         generator = Generator(gene_format)
@@ -21,7 +21,7 @@ def main():
         new_eq_pairs, new_neq_pairs = Checker.check_list(p_list, generator)
         eq_pairs.extend(new_eq_pairs)
         neq_pairs.extend(new_neq_pairs)
-    outputter = Outputter(eq_pairs, neq_pairs, output_path)
+    outputter = Outputter(eq_pairs, neq_pairs, OUTPUT_PATH)
     outputter.write_csv()
     print("Success!")
 

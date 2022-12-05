@@ -9,8 +9,8 @@ class Inputter:
     @staticmethod
     def parse_format(path):
         result = []
-        with open(path, 'r', encoding='utf-8') as f:
-            for line in f.readlines():
+        with open(path, 'r', encoding='utf-8') as file:
+            for line in file.readlines():
                 line_result = []
                 for item in line.split(" "):
                     line_result.extend(re.findall(r"(int)\((\d+),(\d+)\)", item))
