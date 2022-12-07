@@ -3,22 +3,24 @@ import random
 
 class Generator:
 
+    __alphabet__ = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
     @staticmethod
     def random_int(lower, upper):
-        return random.randint(lower, upper + 1)
+        return random.randint(lower, upper)
 
-    def random_char(self):
-        return random.choice(self.__alphabet__)
+    @staticmethod
+    def random_char():
+        return random.choice(Generator.__alphabet__)
 
-    def random_str(self, lower, upper):
+    @staticmethod
+    def random_str(lower, upper):
         rand_str = ""
-        rand_len = self.random_int(lower, upper)
+        rand_len = Generator.random_int(lower, upper)
         for _ in range(0, rand_len):
-            rand_str = rand_str + self.random_char()
+            rand_str = rand_str + Generator.random_char()
         return rand_str
 
     def __init__(self, stdin_format):
-        self.__alphabet__ = "qwertyuiopasdfghjklzxcvbnm"
         self.__stdin_format__ = stdin_format
 
     def gen_test(self):

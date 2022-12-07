@@ -16,8 +16,7 @@ class Inputter:
                     line_result.extend(re.findall(r"(int)\((\d+),(\d+)\)", item))
                     line_result.extend(re.findall(r"(string)\((\d+),(\d+)\)", item))
                     line_result.extend(re.findall(r"(char)", item))
-                line_result = map(Element, line_result)
-                result.append(line_result)
+                result.append([Element(result) for result in line_result])
         return result
 
     def get_format(self):

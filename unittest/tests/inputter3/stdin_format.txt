@@ -1,0 +1,3 @@
+int(114,514) int(191,9810)
+char char char char char
+string(19,19)

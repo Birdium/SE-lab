@@ -14,3 +14,5 @@ class Element:
         if item[0] == "int" or item[0] == "string":
             self.__lower__ = int(item[1])
             self.__upper__ = int(item[2])
+        else:
+            self.__type__ = "char"
